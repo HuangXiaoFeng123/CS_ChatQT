@@ -1,0 +1,18 @@
+#CS_ChatQT
+*****************************************************************************
+Qt version  : 0.01
+PlatForm    : Windows
+Complie Ver: Qt 5.12.0
+CodeBase    : V0.01
+Build Date  : 20231031
+*****************************************************************************
+1.Createing project code base.
+Label             : N/A
+Author            : HuangXiaoFeng
+Issue number  	  : N/A
+Symptom           : N/A
+RootCause         : N/A
+Description       : N/A
+Solution          : N/A
+RelatedFiles     :  N/A
+	
