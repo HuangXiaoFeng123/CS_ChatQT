@@ -224,6 +224,7 @@ Makefile: ../CS_Chat/CS_Chat.pro D:/Qt_File/5.12.10/mingw73_64/mkspecs/win32-g++
 		D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/qt_config.prf \
 		D:/Qt_File/5.12.10/mingw73_64/mkspecs/win32-g++/qmake.conf \
 		D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/exclusive_builds.prf \
 		D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/toolchain.prf \
 		D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/default_pre.prf \
@@ -249,6 +250,7 @@ Makefile: ../CS_Chat/CS_Chat.pro D:/Qt_File/5.12.10/mingw73_64/mkspecs/win32-g++
 		../CS_Chat/CS_Chat.pro \
 		D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Widgets.prl \
 		D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Gui.prl \
+		D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Network.prl \
 		D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Core.prl \
 		D:/Qt_File/5.12.10/mingw73_64/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\CS_Chat\CS_Chat.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -413,6 +415,7 @@ D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/qt_functions.prf:
 D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/qt_config.prf:
 D:/Qt_File/5.12.10/mingw73_64/mkspecs/win32-g++/qmake.conf:
 D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/exclusive_builds.prf:
 D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/toolchain.prf:
 D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/default_pre.prf:
@@ -438,6 +441,7 @@ D:/Qt_File/5.12.10/mingw73_64/mkspecs/features/lex.prf:
 ../CS_Chat/CS_Chat.pro:
 D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Widgets.prl:
 D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Gui.prl:
+D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Network.prl:
 D:/Qt_File/5.12.10/mingw73_64/lib/Qt5Core.prl:
 D:/Qt_File/5.12.10/mingw73_64/lib/qtmain.prl:
 qmake: FORCE

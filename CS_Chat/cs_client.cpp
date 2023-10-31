@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.01");
+    setWindowTitle("CS_Client V0.02");
 }
 
 CS_Client::~CS_Client(void)
