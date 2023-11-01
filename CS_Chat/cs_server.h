@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QPainter>
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +26,7 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *);
+    void paintEvent(QPaintEvent *);
 
 private slots:
     void on_ButtonSend_clicked(void);

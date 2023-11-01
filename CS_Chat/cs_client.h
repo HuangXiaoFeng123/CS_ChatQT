@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTcpSocket>
 #include <QHostAddress>
+#include <QPainter>
 
 namespace Ui
 {
@@ -22,6 +23,7 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *);
+    void paintEvent(QPaintEvent *);
 
 private slots:
     void on_ButtonConnect_clicked(void);

@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.03");
+    setWindowTitle("CS_Client V0.04");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     socket_c=new QTcpSocket(this);
@@ -51,4 +51,11 @@ void CS_Client::closeEvent(QCloseEvent *)
         socket_c->disconnectFromHost();
         socket_c->close();
     }
+}
+
+void CS_Client::paintEvent(QPaintEvent *)
+{
+    QPainter client_p(this);
+    QPixmap client_map(":/Image/clientbackground.jpg");
+    client_p.drawPixmap(0,0,this->width(),this->height(),client_map);
 }

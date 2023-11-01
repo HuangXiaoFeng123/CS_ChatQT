@@ -1,5 +1,29 @@
 #CS_ChatQT
 *****************************************************************************
+Qt version  : 0.04
+PlatForm    : Windows
+Complie Ver: Qt 5.12.0
+CodeBase    : V0.01
+Build Date  : 20231101
+*****************************************************************************
+4.Adding background in dialog.
+Label             : N/A
+Author            : HuangXiaoFeng
+Issue number  	  : N/A
+Symptom           : N/A
+RootCause         : N/A
+Description       : N/A
+Solution          : N/A
+RelatedFiles     :  
+	modified:   CS_Chat/CS_Chat.pro
+        new file:   CS_Chat/ImageResource.qrc
+        modified:   CS_Chat/cs_client.cpp
+        modified:   CS_Chat/cs_client.h
+        modified:   CS_Chat/cs_server.cpp
+        modified:   CS_Chat/cs_server.h
+        modified:   CS_Chat/cs_server.ui
+
+*****************************************************************************
 Qt version  : 0.03
 PlatForm    : Windows
 Complie Ver: Qt 5.12.0

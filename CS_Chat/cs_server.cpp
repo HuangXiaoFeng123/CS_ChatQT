@@ -4,7 +4,7 @@
 CS_Server::CS_Server(QWidget *parent): QWidget(parent), ui(new Ui::CS_Server)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Server V0.03");
+    setWindowTitle("CS_Server V0.04");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     server_s=NULL;
@@ -53,4 +53,11 @@ void CS_Server::closeEvent(QCloseEvent *)
         delete socket_s;
         socket_s=NULL;
     }
+}
+
+void CS_Server::paintEvent(QPaintEvent *)
+{
+    QPainter server_p(this);
+    QPixmap server_map(":/Image/serverbackground.jpg");
+    server_p.drawPixmap(0,0,this->width(),this->height(),server_map);
 }

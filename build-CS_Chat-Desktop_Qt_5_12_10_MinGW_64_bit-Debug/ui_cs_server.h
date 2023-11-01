@@ -72,6 +72,7 @@ public:
 
         textEditWrite = new QTextEdit(CS_Server);
         textEditWrite->setObjectName(QString::fromUtf8("textEditWrite"));
+        textEditWrite->setAutoFillBackground(false);
 
         verticalLayout->addWidget(textEditWrite);
 
