@@ -31,7 +31,7 @@ private slots:
 
 private:
     Ui::CS_Server *ui;
-    QTcpServer *server;
-    QTcpSocket *socket;
+    QTcpServer *server_s;
+    QTcpSocket *socket_s;
 };
 #endif // CS_SERVER_H

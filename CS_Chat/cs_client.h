@@ -2,6 +2,8 @@
 #define CS_CLIENT_H
 
 #include <QWidget>
+#include <QTcpSocket>
+#include <QHostAddress>
 
 namespace Ui
 {
@@ -15,9 +17,19 @@ class CS_Client : public QWidget
 public:
     explicit CS_Client(QWidget *parent = nullptr);
     ~CS_Client(void);
+    void getConnectInfoSlot(void);
+    void readInfoFromServerSlot(void);
+
+protected:
+    void closeEvent(QCloseEvent *);
+
+private slots:
+    void on_ButtonConnect_clicked(void);
+    void on_ButtonSend_clicked(void);
 
 private:
     Ui::CS_Client *ui;
+    QTcpSocket *socket_c;
 };
 
 #endif // CS_CLIENT_H
