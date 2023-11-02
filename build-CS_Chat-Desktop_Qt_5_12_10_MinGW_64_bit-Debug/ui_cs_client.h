@@ -10,6 +10,7 @@
 #define UI_CS_CLIENT_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
@@ -91,6 +92,9 @@ public:
         ButtonFile->setSizePolicy(sizePolicy1);
         ButtonFile->setMinimumSize(QSize(30, 30));
         ButtonFile->setMaximumSize(QSize(30, 30));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/Image/send.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        ButtonFile->setIcon(icon);
 
         gridLayout->addWidget(ButtonFile, 3, 0, 1, 1);
 

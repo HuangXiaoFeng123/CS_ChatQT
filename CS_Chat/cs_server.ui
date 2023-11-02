@@ -44,6 +44,10 @@
          <property name="text">
           <string/>
          </property>
+         <property name="icon">
+          <iconset resource="ImageResource.qrc">
+           <normaloff>:/Image/send.jpg</normaloff>:/Image/send.jpg</iconset>
+         </property>
         </widget>
        </item>
        <item>
@@ -114,6 +118,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="ImageResource.qrc"/>
+ </resources>
  <connections/>
 </ui>

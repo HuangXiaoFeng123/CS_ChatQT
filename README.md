@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+5.Adding send file from server function.
+-------------------------------------------------------------
 4.Adding background in dialog.
 -------------------------------------------------------------
 3.Designed client UI and add function.
