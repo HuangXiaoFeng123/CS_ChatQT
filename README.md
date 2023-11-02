@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+6.Adding send file from client function.
+-------------------------------------------------------------
 5.Adding send file from server function.
 -------------------------------------------------------------
 4.Adding background in dialog.

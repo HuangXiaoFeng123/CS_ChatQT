@@ -5,7 +5,11 @@
 #include <QTcpSocket>
 #include <QHostAddress>
 #include <QPainter>
-#include "cs_server.h"
+#include <QTimer>
+#include <QFile>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QThread>
 
 namespace Ui
 {
@@ -21,6 +25,7 @@ public:
     ~CS_Client(void);
     void getConnectInfoSlot(void);
     void readInfoFromServerSlot(void);
+    void sendMessageSlot(void);
 
 protected:
     void closeEvent(QCloseEvent *);
@@ -38,10 +43,11 @@ private:
     QString filename_c;
     qint64 filesize_c;
     qint64 recvsize_c;
-    CS_Server *s;
+    qint64 sendsize_c;
     bool start_sendfile;
     bool is_start;
     qint64 filesize_temp;
+    QTimer delaytimer_c;
 };
 
 #endif // CS_CLIENT_H

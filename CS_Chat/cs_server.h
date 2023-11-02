@@ -37,9 +37,6 @@ private slots:
     void on_ButtonSend_clicked(void);
     void on_ButtonFile_clicked(void);
 
-signals:
-    void send_Flag(void);
-
 private:
     Ui::CS_Server *ui;
     QTcpServer *server_s;
@@ -48,6 +45,10 @@ private:
     QString filename_s;
     qint64 filesize_s;
     qint64 sendsize_s;
-    QTimer delaytimer;
+    qint64 recvsize_s;
+    QTimer delaytimer_s;
+    bool start_sendfile;
+    bool is_start;
+    qint64 filesize_temp;
 };
 #endif // CS_SERVER_H

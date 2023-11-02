@@ -4,13 +4,14 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.05");
+    setWindowTitle("CS_Client V0.06");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;
     socket_c=new QTcpSocket(this);
     connect(socket_c,&QTcpSocket::connected,this,&CS_Client::getConnectInfoSlot);
     connect(socket_c,&QTcpSocket::readyRead,this,&CS_Client::readInfoFromServerSlot);
+    connect(&delaytimer_c,&QTimer::timeout,this,&CS_Client::sendMessageSlot);
 }
 
 CS_Client::~CS_Client(void)
@@ -102,5 +103,62 @@ void CS_Client::paintEvent(QPaintEvent *)
 
 void CS_Client::on_ButtonFile_clicked(void)
 {
-
+    QString path=QFileDialog::getOpenFileName(this,"open","../");
+    if(path.isEmpty()==false)
+    {
+        filename_c="";
+        filesize_c=0;
+        sendsize_c=0;
+        QFileInfo info(path);
+        filename_c=info.fileName();
+        filesize_c=info.size();
+        file_c.setFileName(path);
+        bool read_fileOK=file_c.open(QIODevice::ReadOnly);
+        if(read_fileOK==true)
+        {
+             int ret=QMessageBox::question(this,"发送","确定要发送?",QMessageBox::Yes,QMessageBox::No);
+             if(ret==QMessageBox::Yes)
+             {
+                 QString head=QString("%1##%2").arg(filename_c).arg(filesize_c);
+                 qint64 len=socket_c->write(head.toUtf8());
+                 if(len>0)
+                 {
+                     delaytimer_c.start(20);
+                 }
+                 else
+                 {
+                     file_c.close();
+                 }
+             }
+             else
+             {
+                 path="";
+             }
+        }
+    }
 }
+
+void CS_Client::sendMessageSlot(void)
+{
+    delaytimer_c.stop();
+    qint64 len=0;
+    do
+    {
+        char buff[4*1024]={0};
+        len=file_c.read(buff,sizeof(buff));
+        socket_c->write(buff,len);
+        sendsize_c+=len;
+    }while(len>0);
+    qDebug()<<sendsize_c<<" "<<filesize_c;
+    if(sendsize_c==filesize_c)
+    {
+        file_c.close();
+        socket_c->disconnectFromHost();
+        socket_c->close();
+    }
+}
+
+
+
+
+
