@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+8.Adding prompt box after send file.
+-------------------------------------------------------------
 7.Fixing send message error after send file from client.
 -------------------------------------------------------------
 6.Adding send file from client function.

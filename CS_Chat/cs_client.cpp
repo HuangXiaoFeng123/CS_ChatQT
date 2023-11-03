@@ -4,11 +4,15 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.07");
+    setWindowTitle("CS_Client V0.08");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;
+    filename_temp="";
     socket_c=new QTcpSocket(this);
+    box_c=new QMessageBox(this);
+    box_c->setIcon(QMessageBox::Icon::Information);
+    box_c->setModal(false);
     connect(socket_c,&QTcpSocket::connected,this,&CS_Client::getConnectInfoSlot);
     connect(socket_c,&QTcpSocket::readyRead,this,&CS_Client::readInfoFromServerSlot);
     connect(&delaytimer_c,&QTimer::timeout,this,&CS_Client::sendMessageSlot);
@@ -44,10 +48,12 @@ void CS_Client::readInfoFromServerSlot(void)
         start_sendfile=true;
         is_start=true;
         filesize_temp=filesize_c;       //第二次解出来文件大小为0 需保存第一次解包的文件大小准确的数值
+        filename_temp=filename_c;
     }
     if(start_sendfile==false)           //文字传输模式
     {
-        ui->textEditRead->append(buff);
+        QString str=QString("server:%1").arg(QString(buff));
+        ui->textEditRead->append(str);
     }
     else                                //文件传输模式
     {
@@ -71,6 +77,9 @@ void CS_Client::readInfoFromServerSlot(void)
                 file_c.close();
                 socket_c->disconnectFromHost();
                 socket_c->close();
+                QString tmp_c=QString("[%1]文件接收成功!").arg(filename_temp);
+                box_c->setText(tmp_c);
+                box_c->show();
                 on_ButtonConnect_clicked();
             }
         }
@@ -162,6 +171,9 @@ void CS_Client::sendMessageSlot(void)
         file_c.close();
         socket_c->disconnectFromHost();
         socket_c->close();
+        QString tmp_c=QString("[%1]文件发送成功!").arg(filename_c);
+        box_c->setText(tmp_c);
+        box_c->show();
         delayreconnect_timer.start(1);      //延时重连
     }
 }

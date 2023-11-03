@@ -4,13 +4,18 @@
 CS_Server::CS_Server(QWidget *parent): QWidget(parent), ui(new Ui::CS_Server)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Server V0.07");
+    setWindowTitle("CS_Server V0.08");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     server_s=NULL;
     socket_s=NULL;
+    filesize_temp=0;
+    filename_temp="";
     server_s=new QTcpServer(this);
     server_s->listen(QHostAddress::Any,8888);
+    box_s=new QMessageBox(this);
+    box_s->setIcon(QMessageBox::Icon::Information);
+    box_s->setModal(false);
     connect(server_s,&QTcpServer::newConnection,this,&CS_Server::getConnectInfoSlot);
     connect(&delaytimer_s,&QTimer::timeout,this,&CS_Server::sendMessageSlot);
 }
@@ -40,10 +45,12 @@ void CS_Server::readInfoFromClientSlot(void)
         start_sendfile=true;
         is_start=true;
         filesize_temp=filesize_s;
+        filename_temp=filename_s;
     }
     if(start_sendfile==false)
     {
-        ui->textEditRead->append(buff);
+        QString str=QString("client:%1").arg(QString(buff));
+        ui->textEditRead->append(str);
     }
     else
     {
@@ -67,6 +74,9 @@ void CS_Server::readInfoFromClientSlot(void)
                 file_s.close();
                 socket_s->disconnectFromHost();
                 socket_s->close();
+                QString tmp_s=QString("[%1]文件接收成功!").arg(filename_temp);
+                box_s->setText(tmp_s);
+                box_s->show();
             }
         }
     }
@@ -155,5 +165,8 @@ void CS_Server::sendMessageSlot(void)
         file_s.close();
         socket_s->disconnectFromHost();
         socket_s->close();
+        QString tmp_s=QString("[%1]文件发送成功!").arg(filename_s);
+        box_s->setText(tmp_s);
+        box_s->show();
     }
 }

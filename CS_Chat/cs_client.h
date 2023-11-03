@@ -47,9 +47,11 @@ private:
     qint64 sendsize_c;
     bool start_sendfile;
     bool is_start;
-    qint64 filesize_temp;
     QTimer delaytimer_c;
     QTimer delayreconnect_timer;
+    qint64 filesize_temp;
+    QString filename_temp;
+    QMessageBox *box_c;
 };
 
 #endif // CS_CLIENT_H

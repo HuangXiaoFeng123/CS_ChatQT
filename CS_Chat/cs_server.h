@@ -50,5 +50,7 @@ private:
     bool start_sendfile;
     bool is_start;
     qint64 filesize_temp;
+    QString filename_temp;
+    QMessageBox *box_s;
 };
 #endif // CS_SERVER_H
