@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+7.Fixing send message error after send file from client.
+-------------------------------------------------------------
 6.Adding send file from client function.
 -------------------------------------------------------------
 5.Adding send file from server function.

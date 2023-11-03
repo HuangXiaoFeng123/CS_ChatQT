@@ -1,5 +1,25 @@
 #CS_ChatQT
 *****************************************************************************
+Qt version  : 0.07
+PlatForm    : Windows
+Complie Ver: Qt 5.12.0
+CodeBase    : V0.01
+Build Date  : 20231103
+*****************************************************************************
+7.Fixing send message error after send file from client.
+Label             : N/A
+Author            : HuangXiaoFeng
+Issue number  	  : N/A
+Symptom           : N/A
+RootCause         : N/A
+Description       : N/A
+Solution          : N/A
+RelatedFiles     :  
+	modified:   CS_Chat/cs_client.cpp
+        modified:   CS_Chat/cs_client.h
+        modified:   CS_Chat/cs_server.cpp
+
+*****************************************************************************
 Qt version  : 0.06
 PlatForm    : Windows
 Complie Ver: Qt 5.12.0

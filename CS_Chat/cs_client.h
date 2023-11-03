@@ -26,6 +26,7 @@ public:
     void getConnectInfoSlot(void);
     void readInfoFromServerSlot(void);
     void sendMessageSlot(void);
+    void delayReconnectSlot(void);
 
 protected:
     void closeEvent(QCloseEvent *);
@@ -48,6 +49,7 @@ private:
     bool is_start;
     qint64 filesize_temp;
     QTimer delaytimer_c;
+    QTimer delayreconnect_timer;
 };
 
 #endif // CS_CLIENT_H

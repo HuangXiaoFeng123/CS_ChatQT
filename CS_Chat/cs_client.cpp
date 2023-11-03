@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.06");
+    setWindowTitle("CS_Client V0.07");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;
@@ -12,6 +12,7 @@ CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
     connect(socket_c,&QTcpSocket::connected,this,&CS_Client::getConnectInfoSlot);
     connect(socket_c,&QTcpSocket::readyRead,this,&CS_Client::readInfoFromServerSlot);
     connect(&delaytimer_c,&QTimer::timeout,this,&CS_Client::sendMessageSlot);
+    connect(&delayreconnect_timer,&QTimer::timeout,this,&CS_Client::delayReconnectSlot);
 }
 
 CS_Client::~CS_Client(void)
@@ -138,6 +139,12 @@ void CS_Client::on_ButtonFile_clicked(void)
     }
 }
 
+void CS_Client::delayReconnectSlot(void)
+{
+    delayreconnect_timer.stop();
+    on_ButtonConnect_clicked();
+}
+
 void CS_Client::sendMessageSlot(void)
 {
     delaytimer_c.stop();
@@ -155,6 +162,7 @@ void CS_Client::sendMessageSlot(void)
         file_c.close();
         socket_c->disconnectFromHost();
         socket_c->close();
+        delayreconnect_timer.start(1);      //延时重连
     }
 }
 
