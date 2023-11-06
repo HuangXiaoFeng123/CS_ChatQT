@@ -3,5 +3,6 @@
         <file>Image/clientbackground.jpg</file>
         <file>Image/send.jpg</file>
         <file>Image/serverbackground.jpg</file>
+        <file>Image/record.png</file>
     </qresource>
 </RCC>

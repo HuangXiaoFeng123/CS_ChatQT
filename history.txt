@@ -1,5 +1,34 @@
 #CS_ChatQT
 *****************************************************************************
+Qt version  : 0.10
+PlatForm    : Windows
+Complie Ver: Qt 5.12.0
+CodeBase    : V0.01
+Build Date  : 20231106
+*****************************************************************************
+10.Optimizeing save ChatRecord function.
+Label             : N/A
+Author            : HuangXiaoFeng
+Issue number  	  : N/A
+Symptom           : N/A
+RootCause         : N/A
+Description       : N/A
+Solution          : N/A
+RelatedFiles     :  
+	modified:   CS_Chat/CS_Chat.pro
+        new file:   CS_Chat/Image/record.png
+        modified:   CS_Chat/ImageResource.qrc
+        new file:   CS_Chat/clientrecord.cpp
+        new file:   CS_Chat/clientrecord.h
+        new file:   CS_Chat/clientrecord.ui
+        modified:   CS_Chat/cs_client.cpp
+        modified:   CS_Chat/cs_client.h
+        modified:   CS_Chat/cs_client.ui
+        modified:   CS_Chat/cs_server.cpp
+        modified:   CS_Chat/cs_server.ui
+        modified:   CS_Chat/serverrecord.cpp
+
+*****************************************************************************
 Qt version  : 0.09
 PlatForm    : Windows
 Complie Ver: Qt 5.12.0

@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+10.Optimizeing save ChatRecord function.
+-------------------------------------------------------------
 9.Adding save ChatRecord function.
 -------------------------------------------------------------
 8.Adding prompt box after send file.

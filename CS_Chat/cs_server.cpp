@@ -4,7 +4,7 @@
 CS_Server::CS_Server(QWidget *parent): QWidget(parent), ui(new Ui::CS_Server)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Server V0.09");
+    setWindowTitle("CS_Server V0.10");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     server_s=NULL;
@@ -58,8 +58,7 @@ void CS_Server::readInfoFromClientSlot(void)
     }
     if(start_sendfile==false)
     {
-        QString str=QString("client:%1").arg(QString(buff));
-        ui->textEditRead->append(str);
+        ui->textEditRead->append(buff);
     }
     else
     {
@@ -98,8 +97,8 @@ void CS_Server::on_ButtonSend_clicked(void)
     if(socket_s!=NULL)
     {
         QString str=ui->textEditWrite->toPlainText();
-        socket_s->write(str.toUtf8().data());
         QString str_temp=QString("server:%1").arg(str);
+        socket_s->write(str_temp.toUtf8().data());
         ui->textEditRead->append(str_temp);
         ui->textEditWrite->clear();
     }
@@ -114,6 +113,10 @@ void CS_Server::closeEvent(QCloseEvent *)
         socket_s->close();
         delete socket_s;
         socket_s=NULL;
+    }
+    if(s_rec.isVisible())
+    {
+        s_rec.close();
     }
 }
 

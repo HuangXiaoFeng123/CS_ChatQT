@@ -9,7 +9,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QThread>
+#include "clientrecord.h"
 
 namespace Ui
 {
@@ -37,6 +37,7 @@ private slots:
     void on_ButtonConnect_clicked(void);
     void on_ButtonSend_clicked(void);
     void on_ButtonFile_clicked(void);
+    void on_pushButton_clicked(void);
 
 private:
     Ui::CS_Client *ui;
@@ -54,6 +55,7 @@ private:
     qint64 filesize_temp;
     QString filename_temp;
     QMessageBox *box_c;
+    ClientRecord c_rec;
 };
 
 #endif // CS_CLIENT_H

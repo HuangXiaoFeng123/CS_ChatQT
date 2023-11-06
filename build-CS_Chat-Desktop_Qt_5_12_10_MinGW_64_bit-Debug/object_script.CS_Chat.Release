@@ -1,0 +1,10 @@
+release/clientrecord.o
+release/cs_client.o
+release/main.o
+release/cs_server.o
+release/serverrecord.o
+release/qrc_ImageResource.o
+release/moc_clientrecord.o
+release/moc_cs_client.o
+release/moc_cs_server.o
+release/moc_serverrecord.o

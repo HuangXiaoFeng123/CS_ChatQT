@@ -67,6 +67,10 @@
          <property name="text">
           <string/>
          </property>
+         <property name="icon">
+          <iconset resource="ImageResource.qrc">
+           <normaloff>:/Image/record.png</normaloff>:/Image/record.png</iconset>
+         </property>
         </widget>
        </item>
        <item>

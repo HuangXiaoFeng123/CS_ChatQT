@@ -72,6 +72,9 @@ public:
         ButtonRecord->setObjectName(QString::fromUtf8("ButtonRecord"));
         ButtonRecord->setMinimumSize(QSize(30, 30));
         ButtonRecord->setMaximumSize(QSize(30, 30));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/Image/record.png"), QSize(), QIcon::Normal, QIcon::Off);
+        ButtonRecord->setIcon(icon1);
 
         horizontalLayout->addWidget(ButtonRecord);
 

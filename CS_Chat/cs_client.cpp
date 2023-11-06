@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.09");
+    setWindowTitle("CS_Client V0.10");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;
@@ -61,8 +61,7 @@ void CS_Client::readInfoFromServerSlot(void)
     }
     if(start_sendfile==false)           //文字传输模式
     {
-        QString str=QString("server:%1").arg(QString(buff));
-        ui->textEditRead->append(str);
+        ui->textEditRead->append(buff);
     }
     else                                //文件传输模式
     {
@@ -101,8 +100,8 @@ void CS_Client::on_ButtonSend_clicked(void)
     if(socket_c!=NULL)
     {
         QString str=ui->textEditWrite->toPlainText();
-        socket_c->write(str.toUtf8().data());
         QString str_temp=QString("client:%1").arg(str);
+        socket_c->write(str_temp.toUtf8().data());
         ui->textEditRead->append(str_temp);
         ui->textEditWrite->clear();
     }
@@ -115,6 +114,10 @@ void CS_Client::closeEvent(QCloseEvent *)
     {
         socket_c->disconnectFromHost();
         socket_c->close();
+    }
+    if(c_rec.isVisible())
+    {
+        c_rec.close();
     }
 }
 
@@ -190,4 +193,9 @@ void CS_Client::sendMessageSlot(void)
         box_c->show();     
         delayreconnect_timer.start(1000);      //延时重连
     }
+}
+
+void CS_Client::on_pushButton_clicked(void)
+{
+    c_rec.show();
 }

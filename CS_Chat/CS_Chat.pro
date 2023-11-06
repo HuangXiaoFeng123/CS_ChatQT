@@ -9,17 +9,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    clientrecord.cpp \
     cs_client.cpp \
     main.cpp \
     cs_server.cpp \
     serverrecord.cpp
 
 HEADERS += \
+    clientrecord.h \
     cs_client.h \
     cs_server.h \
     serverrecord.h
 
 FORMS += \
+    clientrecord.ui \
     cs_client.ui \
     cs_server.ui \
     serverrecord.ui
