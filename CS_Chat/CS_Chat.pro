@@ -11,15 +11,18 @@ CONFIG += c++11
 SOURCES += \
     cs_client.cpp \
     main.cpp \
-    cs_server.cpp
+    cs_server.cpp \
+    serverrecord.cpp
 
 HEADERS += \
     cs_client.h \
-    cs_server.h
+    cs_server.h \
+    serverrecord.h
 
 FORMS += \
     cs_client.ui \
-    cs_server.ui
+    cs_server.ui \
+    serverrecord.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

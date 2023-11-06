@@ -30,6 +30,7 @@ public:
     QTextEdit *textEditRead;
     QHBoxLayout *horizontalLayout;
     QPushButton *ButtonFile;
+    QPushButton *ButtonRecord;
     QSpacerItem *horizontalSpacer;
     QTextEdit *textEditWrite;
     QHBoxLayout *horizontalLayout_2;
@@ -66,6 +67,13 @@ public:
         ButtonFile->setIcon(icon);
 
         horizontalLayout->addWidget(ButtonFile);
+
+        ButtonRecord = new QPushButton(CS_Server);
+        ButtonRecord->setObjectName(QString::fromUtf8("ButtonRecord"));
+        ButtonRecord->setMinimumSize(QSize(30, 30));
+        ButtonRecord->setMaximumSize(QSize(30, 30));
+
+        horizontalLayout->addWidget(ButtonRecord);
 
         horizontalSpacer = new QSpacerItem(538, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -116,6 +124,7 @@ public:
     {
         CS_Server->setWindowTitle(QApplication::translate("CS_Server", "CS_Server", nullptr));
         ButtonFile->setText(QString());
+        ButtonRecord->setText(QString());
         ButtonSend->setText(QApplication::translate("CS_Server", "\345\217\221\351\200\201(S)", nullptr));
     } // retranslateUi
 

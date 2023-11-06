@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.08");
+    setWindowTitle("CS_Client V0.09");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;
@@ -22,6 +22,15 @@ CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 CS_Client::~CS_Client(void)
 {
     delete ui;
+}
+
+void CS_Client::client_chatRecord(void)
+{
+    record_client.setFileName("./ChatRecord_Client.txt");
+    record_client.open(QIODevice::Append);
+    QString record_str=ui->textEditRead->toPlainText();
+    record_client.write(record_str.toUtf8().data());
+    record_client.close();
 }
 
 void CS_Client::on_ButtonConnect_clicked(void)
@@ -80,6 +89,7 @@ void CS_Client::readInfoFromServerSlot(void)
                 QString tmp_c=QString("[%1]文件接收成功!").arg(filename_temp);
                 box_c->setText(tmp_c);
                 box_c->show();
+                client_chatRecord();                   //保存聊天记录
                 on_ButtonConnect_clicked();
             }
         }
@@ -92,11 +102,15 @@ void CS_Client::on_ButtonSend_clicked(void)
     {
         QString str=ui->textEditWrite->toPlainText();
         socket_c->write(str.toUtf8().data());
+        QString str_temp=QString("client:%1").arg(str);
+        ui->textEditRead->append(str_temp);
+        ui->textEditWrite->clear();
     }
 }
 
 void CS_Client::closeEvent(QCloseEvent *)
 {
+    client_chatRecord();
     if(socket_c!=NULL)
     {
         socket_c->disconnectFromHost();
@@ -129,6 +143,7 @@ void CS_Client::on_ButtonFile_clicked(void)
              int ret=QMessageBox::question(this,"发送","确定要发送?",QMessageBox::Yes,QMessageBox::No);
              if(ret==QMessageBox::Yes)
              {
+                 client_chatRecord();
                  QString head=QString("%1##%2").arg(filename_c).arg(filesize_c);
                  qint64 len=socket_c->write(head.toUtf8());
                  if(len>0)
@@ -165,7 +180,6 @@ void CS_Client::sendMessageSlot(void)
         socket_c->write(buff,len);
         sendsize_c+=len;
     }while(len>0);
-    qDebug()<<sendsize_c<<" "<<filesize_c;
     if(sendsize_c==filesize_c)
     {
         file_c.close();
@@ -173,12 +187,7 @@ void CS_Client::sendMessageSlot(void)
         socket_c->close();
         QString tmp_c=QString("[%1]文件发送成功!").arg(filename_c);
         box_c->setText(tmp_c);
-        box_c->show();
-        delayreconnect_timer.start(1);      //延时重连
+        box_c->show();     
+        delayreconnect_timer.start(1000);      //延时重连
     }
 }
-
-
-
-
-

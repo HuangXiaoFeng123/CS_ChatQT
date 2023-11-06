@@ -9,6 +9,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTimer>
+#include "serverrecord.h"
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +29,7 @@ public:
     void getConnectInfoSlot(void);
     void readInfoFromClientSlot(void);
     void sendMessageSlot(void);
+    void server_chatRecord(void);
 
 protected:
     void closeEvent(QCloseEvent *);
@@ -36,12 +38,14 @@ protected:
 private slots:
     void on_ButtonSend_clicked(void);
     void on_ButtonFile_clicked(void);
+    void on_ButtonRecord_clicked(void);
 
 private:
     Ui::CS_Server *ui;
     QTcpServer *server_s;
     QTcpSocket *socket_s;
     QFile file_s;
+    QFile record_server;
     QString filename_s;
     qint64 filesize_s;
     qint64 sendsize_s;
@@ -52,5 +56,6 @@ private:
     qint64 filesize_temp;
     QString filename_temp;
     QMessageBox *box_s;
+    ServerRecord s_rec;
 };
 #endif // CS_SERVER_H

@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+9.Adding save ChatRecord function.
+-------------------------------------------------------------
 8.Adding prompt box after send file.
 -------------------------------------------------------------
 7.Fixing send message error after send file from client.

@@ -27,6 +27,7 @@ public:
     void readInfoFromServerSlot(void);
     void sendMessageSlot(void);
     void delayReconnectSlot(void);
+    void client_chatRecord(void);
 
 protected:
     void closeEvent(QCloseEvent *);
@@ -41,6 +42,7 @@ private:
     Ui::CS_Client *ui;
     QTcpSocket *socket_c;
     QFile file_c;
+    QFile record_client;
     QString filename_c;
     qint64 filesize_c;
     qint64 recvsize_c;

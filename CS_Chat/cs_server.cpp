@@ -4,7 +4,7 @@
 CS_Server::CS_Server(QWidget *parent): QWidget(parent), ui(new Ui::CS_Server)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Server V0.08");
+    setWindowTitle("CS_Server V0.09");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     server_s=NULL;
@@ -17,12 +17,21 @@ CS_Server::CS_Server(QWidget *parent): QWidget(parent), ui(new Ui::CS_Server)
     box_s->setIcon(QMessageBox::Icon::Information);
     box_s->setModal(false);
     connect(server_s,&QTcpServer::newConnection,this,&CS_Server::getConnectInfoSlot);
-    connect(&delaytimer_s,&QTimer::timeout,this,&CS_Server::sendMessageSlot);
+    connect(&delaytimer_s,&QTimer::timeout,this,&CS_Server::sendMessageSlot);  
 }
 
 CS_Server::~CS_Server(void)
 {
     delete ui;
+}
+
+void CS_Server::server_chatRecord(void)
+{
+    record_server.setFileName("./ChatRecord_Server.txt");
+    record_server.open(QIODevice::Append);
+    QString record_str=ui->textEditRead->toPlainText();
+    record_server.write(record_str.toUtf8().data());
+    record_server.close();
 }
 
 void CS_Server::getConnectInfoSlot(void)
@@ -77,6 +86,7 @@ void CS_Server::readInfoFromClientSlot(void)
                 QString tmp_s=QString("[%1]文件接收成功!").arg(filename_temp);
                 box_s->setText(tmp_s);
                 box_s->show();
+                server_chatRecord();
             }
         }
     }
@@ -89,6 +99,9 @@ void CS_Server::on_ButtonSend_clicked(void)
     {
         QString str=ui->textEditWrite->toPlainText();
         socket_s->write(str.toUtf8().data());
+        QString str_temp=QString("server:%1").arg(str);
+        ui->textEditRead->append(str_temp);
+        ui->textEditWrite->clear();
     }
 }
 
@@ -96,6 +109,7 @@ void CS_Server::closeEvent(QCloseEvent *)
 {
     if(socket_s!=NULL)
     {
+        server_chatRecord();
         socket_s->disconnectFromHost();
         socket_s->close();
         delete socket_s;
@@ -130,13 +144,14 @@ void CS_Server::on_ButtonFile_clicked(void)
             int ret=QMessageBox::question(this,"发送","确定要发送?",QMessageBox::Yes,QMessageBox::No);
             if(ret==QMessageBox::Yes)
             {
+                server_chatRecord();
                 QString head=QString("%1##%2").arg(filename_s).arg(filesize_s);     //组报文头
                 qint64 len=socket_s->write(head.toUtf8());
                 if(len>0)
                 {
                     delaytimer_s.start(20);  //延时20ms
                 }
-                else                       //写失败
+                else                         //写失败
                 {
                     file_s.close();
                 }
@@ -169,4 +184,9 @@ void CS_Server::sendMessageSlot(void)
         box_s->setText(tmp_s);
         box_s->show();
     }
+}
+
+void CS_Server::on_ButtonRecord_clicked(void)
+{
+    s_rec.show();
 }
