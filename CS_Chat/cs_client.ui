@@ -14,73 +14,7 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="3">
-    <widget class="QLineEdit" name="lineEditIP">
-     <property name="text">
-      <string>127.0.0.1</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="5">
-    <widget class="QTextEdit" name="textEditRead">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="4">
-    <widget class="QPushButton" name="ButtonSend">
-     <property name="minimumSize">
-      <size>
-       <width>134</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>134</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>发送(s)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QLabel" name="labelPort">
-     <property name="text">
-      <string>服务器端口：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2" colspan="3">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>643</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="5" column="0" colspan="4">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>539</width>
-       <height>27</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="4" rowspan="2">
+   <item row="0" column="5" rowspan="2">
     <widget class="QPushButton" name="ButtonConnect">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -105,20 +39,66 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
+   <item row="1" column="0" colspan="4">
+    <widget class="QLabel" name="labelPort">
+     <property name="text">
+      <string>服务器端口：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="6">
+    <widget class="QTextEdit" name="textEditWrite"/>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLineEdit" name="lineEditIP">
+     <property name="text">
+      <string>127.0.0.1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3" colspan="3">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>643</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="4">
     <widget class="QLineEdit" name="lineEditPort">
      <property name="text">
       <string>8888</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="5">
-    <widget class="QTextEdit" name="textEditWrite"/>
+   <item row="2" column="0" colspan="6">
+    <widget class="QTextEdit" name="textEditRead">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
-   <item row="0" column="0" colspan="3">
-    <widget class="QLabel" name="labelIP">
+   <item row="5" column="5">
+    <widget class="QPushButton" name="ButtonSend">
+     <property name="minimumSize">
+      <size>
+       <width>134</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>134</width>
+       <height>30</height>
+      </size>
+     </property>
      <property name="text">
-      <string>服务器IP：</string>
+      <string>发送(s)</string>
      </property>
     </widget>
    </item>
@@ -151,6 +131,26 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0" colspan="4">
+    <widget class="QLabel" name="labelIP">
+     <property name="text">
+      <string>服务器IP：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="5">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>539</width>
+       <height>27</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item row="3" column="1">
     <widget class="QPushButton" name="pushButton">
      <property name="minimumSize">
@@ -171,6 +171,29 @@
      <property name="icon">
       <iconset resource="ImageResource.qrc">
        <normaloff>:/Image/record.png</normaloff>:/Image/record.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="ButtonDel">
+     <property name="minimumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="ImageResource.qrc">
+       <normaloff>:/Image/delete.jpg</normaloff>:/Image/delete.jpg</iconset>
      </property>
     </widget>
    </item>

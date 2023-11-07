@@ -4,7 +4,7 @@
 CS_Server::CS_Server(QWidget *parent): QWidget(parent), ui(new Ui::CS_Server)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Server V0.10");
+    setWindowTitle("CS_Server V0.11");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     server_s=NULL;
@@ -191,5 +191,17 @@ void CS_Server::sendMessageSlot(void)
 
 void CS_Server::on_ButtonRecord_clicked(void)
 {
+    s_rec.ServerRecord_File();
     s_rec.show();
+}
+
+void CS_Server::on_ButtonDel_clicked(void)
+{
+    int choose=QMessageBox::question(this,"确认","确定要删除聊天记录？",QMessageBox::Yes,QMessageBox::No);
+    if(choose==QMessageBox::Yes)
+    {
+        record_server.setFileName("./ChatRecord_Server.txt");
+        record_server.remove();
+        QMessageBox::information(this,"删除","删除成功");
+    }
 }

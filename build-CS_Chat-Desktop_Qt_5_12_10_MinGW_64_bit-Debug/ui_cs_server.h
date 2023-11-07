@@ -31,6 +31,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *ButtonFile;
     QPushButton *ButtonRecord;
+    QPushButton *ButtonDel;
     QSpacerItem *horizontalSpacer;
     QTextEdit *textEditWrite;
     QHBoxLayout *horizontalLayout_2;
@@ -77,6 +78,16 @@ public:
         ButtonRecord->setIcon(icon1);
 
         horizontalLayout->addWidget(ButtonRecord);
+
+        ButtonDel = new QPushButton(CS_Server);
+        ButtonDel->setObjectName(QString::fromUtf8("ButtonDel"));
+        ButtonDel->setMinimumSize(QSize(30, 30));
+        ButtonDel->setMaximumSize(QSize(30, 30));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/Image/delete.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        ButtonDel->setIcon(icon2);
+
+        horizontalLayout->addWidget(ButtonDel);
 
         horizontalSpacer = new QSpacerItem(538, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -128,6 +139,7 @@ public:
         CS_Server->setWindowTitle(QApplication::translate("CS_Server", "CS_Server", nullptr));
         ButtonFile->setText(QString());
         ButtonRecord->setText(QString());
+        ButtonDel->setText(QString());
         ButtonSend->setText(QApplication::translate("CS_Server", "\345\217\221\351\200\201(S)", nullptr));
     } // retranslateUi
 

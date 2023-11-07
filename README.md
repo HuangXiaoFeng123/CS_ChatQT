@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+11.Adding delete ChatRecord function.
+-------------------------------------------------------------
 10.Optimizeing save ChatRecord function.
 -------------------------------------------------------------
 9.Adding save ChatRecord function.

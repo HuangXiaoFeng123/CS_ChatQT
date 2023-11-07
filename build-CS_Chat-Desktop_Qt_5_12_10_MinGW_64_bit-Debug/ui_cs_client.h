@@ -26,18 +26,19 @@ class Ui_CS_Client
 {
 public:
     QGridLayout *gridLayout;
+    QPushButton *ButtonConnect;
+    QLabel *labelPort;
+    QTextEdit *textEditWrite;
     QLineEdit *lineEditIP;
+    QSpacerItem *horizontalSpacer_2;
+    QLineEdit *lineEditPort;
     QTextEdit *textEditRead;
     QPushButton *ButtonSend;
-    QLabel *labelPort;
-    QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *ButtonConnect;
-    QLineEdit *lineEditPort;
-    QTextEdit *textEditWrite;
-    QLabel *labelIP;
     QPushButton *ButtonFile;
+    QLabel *labelIP;
+    QSpacerItem *horizontalSpacer;
     QPushButton *pushButton;
+    QPushButton *ButtonDel;
 
     void setupUi(QWidget *CS_Client)
     {
@@ -46,37 +47,6 @@ public:
         CS_Client->resize(700, 520);
         gridLayout = new QGridLayout(CS_Client);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        lineEditIP = new QLineEdit(CS_Client);
-        lineEditIP->setObjectName(QString::fromUtf8("lineEditIP"));
-
-        gridLayout->addWidget(lineEditIP, 0, 3, 1, 1);
-
-        textEditRead = new QTextEdit(CS_Client);
-        textEditRead->setObjectName(QString::fromUtf8("textEditRead"));
-        textEditRead->setReadOnly(true);
-
-        gridLayout->addWidget(textEditRead, 2, 0, 1, 5);
-
-        ButtonSend = new QPushButton(CS_Client);
-        ButtonSend->setObjectName(QString::fromUtf8("ButtonSend"));
-        ButtonSend->setMinimumSize(QSize(134, 30));
-        ButtonSend->setMaximumSize(QSize(134, 30));
-
-        gridLayout->addWidget(ButtonSend, 5, 4, 1, 1);
-
-        labelPort = new QLabel(CS_Client);
-        labelPort->setObjectName(QString::fromUtf8("labelPort"));
-
-        gridLayout->addWidget(labelPort, 1, 0, 1, 3);
-
-        horizontalSpacer_2 = new QSpacerItem(643, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 3, 2, 1, 3);
-
-        horizontalSpacer = new QSpacerItem(539, 27, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 5, 0, 1, 4);
-
         ButtonConnect = new QPushButton(CS_Client);
         ButtonConnect->setObjectName(QString::fromUtf8("ButtonConnect"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
@@ -87,22 +57,44 @@ public:
         ButtonConnect->setMinimumSize(QSize(0, 30));
         ButtonConnect->setMaximumSize(QSize(16777215, 30));
 
-        gridLayout->addWidget(ButtonConnect, 0, 4, 2, 1);
+        gridLayout->addWidget(ButtonConnect, 0, 5, 2, 1);
 
-        lineEditPort = new QLineEdit(CS_Client);
-        lineEditPort->setObjectName(QString::fromUtf8("lineEditPort"));
+        labelPort = new QLabel(CS_Client);
+        labelPort->setObjectName(QString::fromUtf8("labelPort"));
 
-        gridLayout->addWidget(lineEditPort, 1, 3, 1, 1);
+        gridLayout->addWidget(labelPort, 1, 0, 1, 4);
 
         textEditWrite = new QTextEdit(CS_Client);
         textEditWrite->setObjectName(QString::fromUtf8("textEditWrite"));
 
-        gridLayout->addWidget(textEditWrite, 4, 0, 1, 5);
+        gridLayout->addWidget(textEditWrite, 4, 0, 1, 6);
 
-        labelIP = new QLabel(CS_Client);
-        labelIP->setObjectName(QString::fromUtf8("labelIP"));
+        lineEditIP = new QLineEdit(CS_Client);
+        lineEditIP->setObjectName(QString::fromUtf8("lineEditIP"));
 
-        gridLayout->addWidget(labelIP, 0, 0, 1, 3);
+        gridLayout->addWidget(lineEditIP, 0, 4, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(643, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 3, 3, 1, 3);
+
+        lineEditPort = new QLineEdit(CS_Client);
+        lineEditPort->setObjectName(QString::fromUtf8("lineEditPort"));
+
+        gridLayout->addWidget(lineEditPort, 1, 4, 1, 1);
+
+        textEditRead = new QTextEdit(CS_Client);
+        textEditRead->setObjectName(QString::fromUtf8("textEditRead"));
+        textEditRead->setReadOnly(true);
+
+        gridLayout->addWidget(textEditRead, 2, 0, 1, 6);
+
+        ButtonSend = new QPushButton(CS_Client);
+        ButtonSend->setObjectName(QString::fromUtf8("ButtonSend"));
+        ButtonSend->setMinimumSize(QSize(134, 30));
+        ButtonSend->setMaximumSize(QSize(134, 30));
+
+        gridLayout->addWidget(ButtonSend, 5, 5, 1, 1);
 
         ButtonFile = new QPushButton(CS_Client);
         ButtonFile->setObjectName(QString::fromUtf8("ButtonFile"));
@@ -119,6 +111,15 @@ public:
 
         gridLayout->addWidget(ButtonFile, 3, 0, 1, 1);
 
+        labelIP = new QLabel(CS_Client);
+        labelIP->setObjectName(QString::fromUtf8("labelIP"));
+
+        gridLayout->addWidget(labelIP, 0, 0, 1, 4);
+
+        horizontalSpacer = new QSpacerItem(539, 27, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 5, 0, 1, 5);
+
         pushButton = new QPushButton(CS_Client);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setMinimumSize(QSize(30, 30));
@@ -129,6 +130,16 @@ public:
 
         gridLayout->addWidget(pushButton, 3, 1, 1, 1);
 
+        ButtonDel = new QPushButton(CS_Client);
+        ButtonDel->setObjectName(QString::fromUtf8("ButtonDel"));
+        ButtonDel->setMinimumSize(QSize(30, 30));
+        ButtonDel->setMaximumSize(QSize(30, 30));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/Image/delete.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        ButtonDel->setIcon(icon2);
+
+        gridLayout->addWidget(ButtonDel, 3, 2, 1, 1);
+
 
         retranslateUi(CS_Client);
 
@@ -138,14 +149,15 @@ public:
     void retranslateUi(QWidget *CS_Client)
     {
         CS_Client->setWindowTitle(QApplication::translate("CS_Client", "Form", nullptr));
-        lineEditIP->setText(QApplication::translate("CS_Client", "127.0.0.1", nullptr));
-        ButtonSend->setText(QApplication::translate("CS_Client", "\345\217\221\351\200\201(s)", nullptr));
-        labelPort->setText(QApplication::translate("CS_Client", "\346\234\215\345\212\241\345\231\250\347\253\257\345\217\243\357\274\232", nullptr));
         ButtonConnect->setText(QApplication::translate("CS_Client", "connect", nullptr));
+        labelPort->setText(QApplication::translate("CS_Client", "\346\234\215\345\212\241\345\231\250\347\253\257\345\217\243\357\274\232", nullptr));
+        lineEditIP->setText(QApplication::translate("CS_Client", "127.0.0.1", nullptr));
         lineEditPort->setText(QApplication::translate("CS_Client", "8888", nullptr));
-        labelIP->setText(QApplication::translate("CS_Client", "\346\234\215\345\212\241\345\231\250IP\357\274\232", nullptr));
+        ButtonSend->setText(QApplication::translate("CS_Client", "\345\217\221\351\200\201(s)", nullptr));
         ButtonFile->setText(QString());
+        labelIP->setText(QApplication::translate("CS_Client", "\346\234\215\345\212\241\345\231\250IP\357\274\232", nullptr));
         pushButton->setText(QString());
+        ButtonDel->setText(QString());
     } // retranslateUi
 
 };

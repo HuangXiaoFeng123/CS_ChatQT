@@ -74,6 +74,29 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="ButtonDel">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="ImageResource.qrc">
+           <normaloff>:/Image/delete.jpg</normaloff>:/Image/delete.jpg</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>

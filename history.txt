@@ -1,5 +1,33 @@
 #CS_ChatQT
 *****************************************************************************
+Qt version  : 0.11
+PlatForm    : Windows
+Complie Ver: Qt 5.12.0
+CodeBase    : V0.01
+Build Date  : 20231107
+*****************************************************************************
+11.Adding delete ChatRecord function.
+Label             : N/A
+Author            : HuangXiaoFeng
+Issue number  	  : N/A
+Symptom           : N/A
+RootCause         : N/A
+Description       : N/A
+Solution          : N/A
+RelatedFiles     :  
+        modified:   CS_Chat/ImageResource.qrc
+        modified:   CS_Chat/clientrecord.cpp
+        modified:   CS_Chat/clientrecord.h
+        modified:   CS_Chat/cs_client.cpp
+        modified:   CS_Chat/cs_client.h
+        modified:   CS_Chat/cs_client.ui
+        modified:   CS_Chat/cs_server.cpp
+        modified:   CS_Chat/cs_server.h
+        modified:   CS_Chat/cs_server.ui
+        modified:   CS_Chat/serverrecord.cpp
+        modified:   CS_Chat/serverrecord.h
+
+*****************************************************************************
 Qt version  : 0.10
 PlatForm    : Windows
 Complie Ver: Qt 5.12.0

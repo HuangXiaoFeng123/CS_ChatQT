@@ -16,6 +16,7 @@ class ClientRecord : public QWidget
 public:
     explicit ClientRecord(QWidget *parent = nullptr);
     ~ClientRecord(void);
+    void ClientRecord_File(void);
 
 private:
     Ui::ClientRecord *ui;

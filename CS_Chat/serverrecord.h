@@ -16,6 +16,7 @@ class ServerRecord : public QWidget
 public:
     explicit ServerRecord(QWidget *parent = nullptr);
     ~ServerRecord(void);
+    void ServerRecord_File(void);
 
 private:
     Ui::ServerRecord *ui;

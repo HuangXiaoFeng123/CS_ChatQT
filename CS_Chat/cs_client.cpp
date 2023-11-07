@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.10");
+    setWindowTitle("CS_Client V0.11");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;
@@ -197,5 +197,17 @@ void CS_Client::sendMessageSlot(void)
 
 void CS_Client::on_pushButton_clicked(void)
 {
+    c_rec.ClientRecord_File();
     c_rec.show();
+}
+
+void CS_Client::on_ButtonDel_clicked(void)
+{
+    int choose=QMessageBox::question(this,"确认","确定要删除聊天记录？",QMessageBox::Yes,QMessageBox::No);
+    if(choose==QMessageBox::Yes)
+    {
+        record_client.setFileName("./ChatRecord_Client.txt");
+        record_client.remove();
+        QMessageBox::information(this,"删除","删除成功");
+    }
 }

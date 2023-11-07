@@ -39,6 +39,7 @@ private slots:
     void on_ButtonSend_clicked(void);
     void on_ButtonFile_clicked(void);
     void on_ButtonRecord_clicked(void);
+    void on_ButtonDel_clicked(void);
 
 private:
     Ui::CS_Server *ui;
