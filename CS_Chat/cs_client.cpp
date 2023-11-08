@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.12");
+    setWindowTitle("CS_Client V0.13");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;

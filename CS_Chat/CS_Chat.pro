@@ -36,3 +36,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     ImageResource.qrc
+
+RC_ICONS = exe_ico.ico

@@ -53,7 +53,6 @@ private:
     bool start_sendfile;
     bool is_start;
     QTimer delaytimer_c;
-    QTimer delayreconnect_timer;
     qint64 filesize_temp;
     QString filename_temp;
     QMessageBox *box_c;

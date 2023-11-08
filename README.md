@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+13.Adding ico logo in exe file.
+-------------------------------------------------------------
 12.Using pthread to optimize delay reconnect.
 -------------------------------------------------------------
 11.Adding delete ChatRecord function.

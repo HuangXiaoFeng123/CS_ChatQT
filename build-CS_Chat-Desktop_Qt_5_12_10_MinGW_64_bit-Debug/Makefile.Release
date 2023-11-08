@@ -19,13 +19,13 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++11 -Wall -W -Wextra -fe
 INCPATH       = -I..\CS_Chat -I. -ID:\Qt_File\5.12.10\mingw73_64\include -ID:\Qt_File\5.12.10\mingw73_64\include\QtWidgets -ID:\Qt_File\5.12.10\mingw73_64\include\QtGui -ID:\Qt_File\5.12.10\mingw73_64\include\QtANGLE -ID:\Qt_File\5.12.10\mingw73_64\include\QtNetwork -ID:\Qt_File\5.12.10\mingw73_64\include\QtCore -Irelease -I. -I/include -ID:\Qt_File\5.12.10\mingw73_64\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Widgets.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Gui.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Network.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Core.a  -lmingw32 D:\Qt_File\5.12.10\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.6.11-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Widgets.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Gui.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Network.a D:\Qt_File\5.12.10\mingw73_64\lib\libQt5Core.a release\CS_Chat_resource_res.o  -lmingw32 D:\Qt_File\5.12.10\mingw73_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.6.11-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = D:\Qt_File\5.12.10\mingw73_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\CS_Chat_resource_res.o
 COPY          = copy /y
 SED           = $(QMAKE) -install sed
 COPY_FILE     = copy /y
@@ -91,8 +91,11 @@ DESTDIR_TARGET = release\CS_Chat.exe
 first: all
 all: Makefile.Release  release/CS_Chat.exe
 
-release/CS_Chat.exe: D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Widgets.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Gui.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Network.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Core.a D:/Qt_File/5.12.10/mingw73_64/lib/libqtmain.a ui_clientrecord.h ui_cs_client.h ui_cs_server.h ui_serverrecord.h $(OBJECTS) 
+release/CS_Chat.exe: D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Widgets.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Gui.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Network.a D:/Qt_File/5.12.10/mingw73_64/lib/libQt5Core.a D:/Qt_File/5.12.10/mingw73_64/lib/libqtmain.a ui_clientrecord.h ui_cs_client.h ui_cs_server.h ui_serverrecord.h $(OBJECTS) release/CS_Chat_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.CS_Chat.Release  $(LIBS)
+
+release/CS_Chat_resource_res.o: CS_Chat_resource.rc
+	windres -i CS_Chat_resource.rc -o release\CS_Chat_resource_res.o --include-dir=. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release ..\CS_Chat\CS_Chat.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -104,6 +107,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\clientrecord.o release\cs_client.o release\main.o release\cs_server.o release\mypthread.o release\serverrecord.o release\qrc_ImageResource.o release\moc_clientrecord.o release\moc_cs_client.o release\moc_cs_server.o release\moc_mypthread.o release\moc_serverrecord.o
+	-$(DEL_FILE) release\CS_Chat_resource_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -380,6 +384,7 @@ release/moc_cs_client.cpp: ../CS_Chat/cs_client.h \
 		../CS_Chat/mypthread.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QThread \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qthread.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QtDebug \
 		release/moc_predefs.h \
 		D:/Qt_File/5.12.10/mingw73_64/bin/moc.exe
 	D:\Qt_File\5.12.10\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/SKU1-6/Desktop/CS_ChatQT/build-CS_Chat-Desktop_Qt_5_12_10_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/Qt_File/5.12.10/mingw73_64/mkspecs/win32-g++ -IC:/Users/SKU1-6/Desktop/CS_ChatQT/CS_Chat -ID:/Qt_File/5.12.10/mingw73_64/include -ID:/Qt_File/5.12.10/mingw73_64/include/QtWidgets -ID:/Qt_File/5.12.10/mingw73_64/include/QtGui -ID:/Qt_File/5.12.10/mingw73_64/include/QtANGLE -ID:/Qt_File/5.12.10/mingw73_64/include/QtNetwork -ID:/Qt_File/5.12.10/mingw73_64/include/QtCore -I. -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt_File/Tools/mingw730_64/x86_64-w64-mingw32/include ..\CS_Chat\cs_client.h -o release\moc_cs_client.cpp
@@ -569,6 +574,21 @@ release/moc_mypthread.cpp: ../CS_Chat/mypthread.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qvarlengtharray.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcontainerfwd.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qobject_impl.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QtDebug \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qdebug.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qhash.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qmap.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qtextstream.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qiodevice.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qlocale.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qvariant.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qshareddata.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qvector.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qpoint.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qset.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcontiguouscache.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qsharedpointer.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qsharedpointer_impl.h \
 		release/moc_predefs.h \
 		D:/Qt_File/5.12.10/mingw73_64/bin/moc.exe
 	D:\Qt_File\5.12.10\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/SKU1-6/Desktop/CS_ChatQT/build-CS_Chat-Desktop_Qt_5_12_10_MinGW_64_bit-Debug/release/moc_predefs.h -ID:/Qt_File/5.12.10/mingw73_64/mkspecs/win32-g++ -IC:/Users/SKU1-6/Desktop/CS_ChatQT/CS_Chat -ID:/Qt_File/5.12.10/mingw73_64/include -ID:/Qt_File/5.12.10/mingw73_64/include/QtWidgets -ID:/Qt_File/5.12.10/mingw73_64/include/QtGui -ID:/Qt_File/5.12.10/mingw73_64/include/QtANGLE -ID:/Qt_File/5.12.10/mingw73_64/include/QtNetwork -ID:/Qt_File/5.12.10/mingw73_64/include/QtCore -I. -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Qt_File/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Qt_File/Tools/mingw730_64/x86_64-w64-mingw32/include ..\CS_Chat\mypthread.h -o release\moc_mypthread.cpp
@@ -977,6 +997,7 @@ release/cs_client.o: ../CS_Chat/cs_client.cpp ../CS_Chat/cs_client.h \
 		../CS_Chat/mypthread.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QThread \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qthread.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QtDebug \
 		ui_cs_client.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QVariant \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtGui/QIcon \
@@ -1145,6 +1166,7 @@ release/main.o: ../CS_Chat/main.cpp ../CS_Chat/cs_server.h \
 		../CS_Chat/mypthread.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QThread \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qthread.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QtDebug \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/QApplication \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtWidgets/qapplication.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -1365,7 +1387,22 @@ release/mypthread.o: ../CS_Chat/mypthread.cpp ../CS_Chat/mypthread.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qmetatype.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qvarlengtharray.h \
 		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcontainerfwd.h \
-		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qobject_impl.h
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qobject_impl.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/QtDebug \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qdebug.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qhash.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qmap.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qtextstream.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qiodevice.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qlocale.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qvariant.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qshareddata.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qvector.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qpoint.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qset.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qcontiguouscache.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qsharedpointer.h \
+		D:/Qt_File/5.12.10/mingw73_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mypthread.o ..\CS_Chat\mypthread.cpp
 
 release/serverrecord.o: ../CS_Chat/serverrecord.cpp ../CS_Chat/serverrecord.h \
