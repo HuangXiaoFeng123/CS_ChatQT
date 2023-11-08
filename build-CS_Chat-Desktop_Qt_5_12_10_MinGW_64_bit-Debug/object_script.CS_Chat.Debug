@@ -2,9 +2,11 @@ debug/clientrecord.o
 debug/cs_client.o
 debug/main.o
 debug/cs_server.o
+debug/mypthread.o
 debug/serverrecord.o
 debug/qrc_ImageResource.o
 debug/moc_clientrecord.o
 debug/moc_cs_client.o
 debug/moc_cs_server.o
+debug/moc_mypthread.o
 debug/moc_serverrecord.o

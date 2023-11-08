@@ -13,12 +13,14 @@ SOURCES += \
     cs_client.cpp \
     main.cpp \
     cs_server.cpp \
+    mypthread.cpp \
     serverrecord.cpp
 
 HEADERS += \
     clientrecord.h \
     cs_client.h \
     cs_server.h \
+    mypthread.h \
     serverrecord.h
 
 FORMS += \

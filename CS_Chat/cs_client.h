@@ -10,6 +10,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include "clientrecord.h"
+#include "mypthread.h"
 
 namespace Ui
 {
@@ -57,6 +58,7 @@ private:
     QString filename_temp;
     QMessageBox *box_c;
     ClientRecord c_rec;
+    MyPthread *thread_c;
 };
 
 #endif // CS_CLIENT_H

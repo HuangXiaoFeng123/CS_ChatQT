@@ -4,7 +4,7 @@
 CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Client V0.11");
+    setWindowTitle("CS_Client V0.12");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     filesize_temp=0;
@@ -13,10 +13,11 @@ CS_Client::CS_Client(QWidget *parent) :QWidget(parent),ui(new Ui::CS_Client)
     box_c=new QMessageBox(this);
     box_c->setIcon(QMessageBox::Icon::Information);
     box_c->setModal(false);
+    thread_c=new MyPthread(this);
     connect(socket_c,&QTcpSocket::connected,this,&CS_Client::getConnectInfoSlot);
     connect(socket_c,&QTcpSocket::readyRead,this,&CS_Client::readInfoFromServerSlot);
     connect(&delaytimer_c,&QTimer::timeout,this,&CS_Client::sendMessageSlot);
-    connect(&delayreconnect_timer,&QTimer::timeout,this,&CS_Client::delayReconnectSlot);
+    connect(thread_c,&MyPthread::isDone,this,&CS_Client::delayReconnectSlot);
 }
 
 CS_Client::~CS_Client(void)
@@ -168,8 +169,9 @@ void CS_Client::on_ButtonFile_clicked(void)
 
 void CS_Client::delayReconnectSlot(void)
 {
-    delayreconnect_timer.stop();
     on_ButtonConnect_clicked();
+    thread_c->quit();
+    thread_c->wait();           //线程销毁
 }
 
 void CS_Client::sendMessageSlot(void)
@@ -191,7 +193,7 @@ void CS_Client::sendMessageSlot(void)
         QString tmp_c=QString("[%1]文件发送成功!").arg(filename_c);
         box_c->setText(tmp_c);
         box_c->show();     
-        delayreconnect_timer.start(1000);      //延时重连
+        thread_c->start();              //开始线程
     }
 }
 

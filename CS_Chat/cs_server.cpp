@@ -4,7 +4,7 @@
 CS_Server::CS_Server(QWidget *parent): QWidget(parent), ui(new Ui::CS_Server)
 {
     ui->setupUi(this);
-    setWindowTitle("CS_Server V0.11");
+    setWindowTitle("CS_Server V0.12");
     setMinimumSize(700,520);
     setMaximumSize(700,520);
     server_s=NULL;

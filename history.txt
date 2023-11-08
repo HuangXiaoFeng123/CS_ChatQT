@@ -1,5 +1,28 @@
 #CS_ChatQT
 *****************************************************************************
+Qt version  : 0.12
+PlatForm    : Windows
+Complie Ver: Qt 5.12.0
+CodeBase    : V0.01
+Build Date  : 20231108
+*****************************************************************************
+12.Using pthread to optimize delay reconnect.
+Label             : N/A
+Author            : HuangXiaoFeng
+Issue number  	  : N/A
+Symptom           : N/A
+RootCause         : N/A
+Description       : N/A
+Solution          : N/A
+RelatedFiles     :  
+        modified:   CS_Chat/CS_Chat.pro
+        modified:   CS_Chat/cs_client.cpp
+        modified:   CS_Chat/cs_client.h
+        modified:   CS_Chat/cs_server.cpp
+        new file:   CS_Chat/mypthread.cpp
+        new file:   CS_Chat/mypthread.h
+
+*****************************************************************************
 Qt version  : 0.11
 PlatForm    : Windows
 Complie Ver: Qt 5.12.0

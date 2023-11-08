@@ -1,5 +1,7 @@
 # CS_ChatQT
 -------------------------------------------------------------
+12.Using pthread to optimize delay reconnect.
+-------------------------------------------------------------
 11.Adding delete ChatRecord function.
 -------------------------------------------------------------
 10.Optimizeing save ChatRecord function.
